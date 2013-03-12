@@ -6,10 +6,8 @@ angular.module("services", ["ngResource"]).
 			getBySymbol: function(symbol, cbs) {
 				cbs = angular.extend({}, defaultCallbacks, cbs);
 
-				var url = "http://dev.markitondemand.com/Api/Quote/jsonp?callback=JSON_CALLBACK";
-				url = "http://localhost/internal/modapis/api/quote/:action";
-
-				var query = $resource(url,
+				var query = $resource(
+					"http://dev.markitondemand.com/Api/Quote/:action",
 					{ action: "jsonp", callback: "JSON_CALLBACK", symbol: symbol },
 					{ get: { method: "jsonp" } }
 				);
@@ -26,7 +24,7 @@ angular.module("services", ["ngResource"]).
 						cbs.complete();
 					},
 					function() {
-						cbs.errror();
+						cbs.error();
 						cbs.complete();
 					}
 				);
