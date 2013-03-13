@@ -1,6 +1,6 @@
 (function() {
 
-	var app = angular.module("CompareTool", ["filters", "services"]);
+	var app = angular.module("compareTool", ["filters", "services"]);
 
 	// Compare Controller
 	app.controller("CompareCtrl", function($scope, $filter, companyService) {
